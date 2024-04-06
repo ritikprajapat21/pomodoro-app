@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { FaXmark } from "react-icons/fa6";
+import CloseIcon from "../assets/CloseIcon";
 
 const Modal = ({
   open,
@@ -44,8 +44,8 @@ const Modal = ({
     >
       <div className="flex justify-between items-center gap-4">
         <h1 className="font-bold text-xl">Settings</h1>
-        <FaXmark
-          className="m-0 p-1 rounded-full cursor-pointer bg-red-500 text-white text-2xl"
+        <CloseIcon
+          className="m-0 p-1 rounded-full cursor-pointer bg-red-500 text-white text-lg"
           onClick={close}
         />
       </div>
