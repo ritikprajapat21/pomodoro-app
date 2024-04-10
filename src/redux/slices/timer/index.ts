@@ -42,7 +42,6 @@ const timerSlice = createSlice({
         state[action.payload.index].minutes === 0 &&
         state[action.payload.index].seconds === 0
       ) {
-        alert("Time up");
         state[action.payload.index].play = true;
         state[action.payload.index].on = false;
         state[action.payload.index].minutes = state[action.payload.index].time;
