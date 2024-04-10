@@ -1,5 +1,6 @@
 import Setting from "./Setting";
 import ClockIcon from "../assets/ClockIcon";
+import Audio from "./Audio";
 
 function Navbar(): React.JSX.Element {
   return (
@@ -9,6 +10,7 @@ function Navbar(): React.JSX.Element {
         <h1 className="text-xl font-bold">Pomodoro App</h1>
       </div>
       <Setting />
+      <Audio />
     </nav>
   );
 }

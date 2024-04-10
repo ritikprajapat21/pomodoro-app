@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-import { decrementSeconds, setOn } from "../redux/slices/timer";
+import { decrementSeconds, setOn, setPlay } from "../redux/slices/timer";
+import BellOffIcon from "../assets/BellOffIcon";
 
 const Timer = (): React.JSX.Element => {
+  const stage = useAppSelector((state) => state.stage);
   const timer = useAppSelector((state) => state.timer);
   const stageIndex = useAppSelector((state) => state.stage);
 
@@ -27,12 +29,22 @@ const Timer = (): React.JSX.Element => {
         {timer[stageIndex].minutes}:
         {timer[stageIndex].seconds.toString().padStart(2, "0")}
       </h1>
-      <button
-        className="bg-white mx-auto text-2xl px-16 py-2 rounded text-blue-500 font-bold uppercase"
-        onClick={() => dispatch(setOn({ index: stageIndex }))}
-      >
-        {timer[stageIndex].on ? "Pause" : "Start"}
-      </button>
+      <div className="flex gap-4 mx-auto text-2xl text-blue-500 font-bold uppercase">
+        <button
+          className="px-16 py-2 bg-white rounded"
+          onClick={() => dispatch(setOn({ index: stageIndex }))}
+        >
+          {timer[stageIndex].on || timer[stage].play ? "Pause" : "Start"}
+        </button>
+        {timer[stage].play && (
+          <button
+            className="rounded"
+            onClick={() => dispatch(setPlay({ index: stage }))}
+          >
+            <BellOffIcon className="text-xl w-8 h-8 text-white" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };
